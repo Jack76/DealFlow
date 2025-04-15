@@ -1,0 +1,114 @@
+/* src/styles/sidebar.css */
+
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 250px;
+    height: calc(100vh - 60px);
+    background: var(--sys-surface);
+    border-right: 1px solid var(--sys-outline);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    box-sizing: border-box;
+    transition: width 0.3s ease;
+    z-index: 900;
+  }
+  
+  .sidebar.open {
+    width: 250px;
+  }
+  
+  .sidebar.closed {
+    width: 60px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .sidebar-title {
+    font-size: var(--sys-body-large-size);
+    font-weight: 600;
+    color: var(--sys-on-background);
+    margin: 0;
+    display: block;
+  }
+  
+  .sidebar-toggle {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    color: var(--sys-on-surface);
+    transition: color 0.2s;
+  }
+  
+  .sidebar-toggle:hover {
+    color: var(--sys-primary);
+  }
+  
+  .sidebar-toggle-expand {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    color: var(--sys-on-surface);
+    transition: color 0.2s;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sidebar-toggle-expand:hover {
+    color: var(--sys-primary);
+  }
+  
+  .sidebar-toggle-expand .material-icons {
+    font-size: 24px;
+  }
+  
+  .sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-item {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar-link {
+    display: block;
+    padding: 8px 12px;
+    font-size: var(--sys-body-small-size);
+    color: var(--sys-on-surface);
+    text-decoration: none;
+    border-radius: var(--mat-sys-corner-small);
+    transition: background 0.2s, color 0.2s;
+  }
+  
+  .sidebar-link:hover {
+    background: var(--sys-surface-container-low);
+    color: var(--sys-primary);
+  }
+  
+  /* Page Container 与 Sidebar 联动 */
+  .page-container {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .page-container.sidebar-closed {
+    margin-left: 60px;
+  }

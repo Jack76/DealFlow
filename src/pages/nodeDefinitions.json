@@ -1,0 +1,258 @@
+
+{
+    "componentCategories": [
+      {
+        "name": "触发器",
+        "type": "trigger",
+        "items": [
+          { "label": "API调用触发", "data": { "label": "API Call", "condition": "api_call" } },
+          { "label": "CRM状态变更", "data": { "label": "CRM Status Change", "condition": "crm_status" } },
+          { "label": "社交媒体互动", "data": { "label": "Social Media Interaction", "condition": "social" } }
+        ]
+      },
+      {
+        "name": "条件分支",
+        "type": "condition",
+        "items": [
+          { "label": "A/B测试分组", "data": { "label": "A/B Test Group", "logic": "ab_test", "group": "A" } },
+          { "label": "用户分群（RFM）", "data": { "label": "RFM Segmentation", "logic": "rfm", "r": "", "f": "", "m": "" } },
+          { "label": "黑名单过滤", "data": { "label": "Blacklist Filter", "logic": "blacklist", "listId": "" } }
+        ]
+      },
+      {
+        "name": "动作",
+        "type": "action",
+        "items": [
+          { "label": "推送通知", "data": { "label": "Push Notification", "actionType": "push", "channel": "app", "message": "" } },
+          { "label": "创建CRM任务", "data": { "label": "Create CRM Task", "actionType": "crm_task", "title": "" } },
+          { "label": "调用外部API", "data": { "label": "Call External API", "actionType": "api_call", "url": "" } }
+        ]
+      },
+      {
+        "name": "高级功能",
+        "type": "advanced",
+        "items": [
+          { "label": "数据统计节点", "data": { "label": "Data Analytics", "metric": "conversion_rate" } },
+          { "label": "Webhook监听", "data": { "label": "Webhook Listener", "url": "" } },
+          { "label": "循环执行", "data": { "label": "Loop Execution", "condition": "", "maxLoops": 10 } }
+        ]
+      },
+      {
+        "name": "CRM自动化",
+        "type": "crm",
+        "items": [
+          { 
+            "label": "客户分群（RFM）", 
+            "data": { 
+              "label": "RFM Segmentation", 
+              "logic": "rfm",
+              "r": 30,
+              "f": 3,
+              "m": 1000
+            } 
+          },
+          {
+            "label": "客户状态变更触发",
+            "data": {
+              "label": "Customer Status Change",
+              "condition": "status_change",
+              "from": "trial",
+              "to": "paid"
+            }
+          }
+        ]
+      },
+      {
+        "name": "电商自动化",
+        "type": "ecommerce",
+        "items": [
+          {
+            "label": "弃单检测",
+            "data": {
+              "label": "Abandoned Cart",
+              "condition": "abandoned_cart",
+              "timeout": "1h"
+            }
+          },
+          {
+            "label": "订单状态更新",
+            "data": {
+              "label": "Order Status Update",
+              "condition": "order_status",
+              "status": "shipped"
+            }
+          }
+        ]
+      }
+    ],
+    "nodeSchemas": {
+      "trigger": {
+        "label": "",
+        "description": "",
+        "condition": "api_call",
+        "required": true,
+        "fields": [
+          { 
+            "name": "condition", 
+            "type": "select", 
+            "options": ["api_call", "crm_status", "social"], 
+            "required": true,
+            "description": "选择触发条件类型"
+          }
+        ]
+      },
+      "action": {
+        "label": "",
+        "description": "",
+        "actionType": "push",
+        "channel": "app",
+        "message": "",
+        "required": true,
+        "fields": [
+          { 
+            "name": "actionType", 
+            "type": "select", 
+            "options": ["push", "crm_task", "api_call"], 
+            "required": true,
+            "description": "选择动作类型"
+          },
+          { 
+            "name": "channel", 
+            "type": "select", 
+            "options": ["app", "wechat"], 
+            "showIf": { "actionType": "push" },
+            "description": "选择推送渠道"
+          },
+          { 
+            "name": "message", 
+            "type": "text", 
+            "showIf": { "actionType": "push" },
+            "description": "输入推送消息内容"
+          },
+          { 
+            "name": "title", 
+            "type": "text", 
+            "showIf": { "actionType": "crm_task" },
+            "description": "输入任务标题"
+          },
+          { 
+            "name": "url", 
+            "type": "url", 
+            "showIf": { "actionType": "api_call" }, 
+            "pattern": "https?://.+",
+            "description": "输入API完整URL"
+          }
+        ]
+      },
+      "condition": {
+        "label": "",
+        "description": "",
+        "logic": "ab_test",
+        "group": "A",
+        "required": true,
+        "fields": [
+          {
+            "name": "logic",
+            "type": "select",
+            "options": ["ab_test", "rfm", "blacklist"],
+            "required": true,
+            "description": "选择条件逻辑类型"
+          },
+          {
+            "name": "group",
+            "type": "select",
+            "options": ["A", "B"],
+            "showIf": { "logic": "ab_test" },
+            "description": "选择AB测试分组"
+          },
+          {
+            "name": "r",
+            "type": "number",
+            "showIf": { "logic": "rfm" },
+            "description": "最近购买天数(R)"
+          },
+          {
+            "name": "f",
+            "type": "number",
+            "showIf": { "logic": "rfm" },
+            "description": "购买频率(F)"
+          },
+          {
+            "name": "m",
+            "type": "number",
+            "showIf": { "logic": "rfm" },
+            "description": "购买金额(M)"
+          },
+          {
+            "name": "listId",
+            "type": "text",
+            "showIf": { "logic": "blacklist" },
+            "description": "输入黑名单ID"
+          }
+        ]
+      },
+      "advanced": {
+        "label": "",
+        "description": "",
+        "metric": "conversion_rate",
+        "required": true,
+        "fields": [
+          {
+            "name": "metric",
+            "type": "select",
+            "options": ["conversion_rate", "webhook", "loop"],
+            "required": true,
+            "description": "选择高级功能类型"
+          },
+          {
+            "name": "url",
+            "type": "url",
+            "showIf": { "metric": "webhook" },
+            "description": "输入Webhook URL"
+          },
+          {
+            "name": "condition",
+            "type": "text",
+            "showIf": { "metric": "loop" },
+            "description": "输入循环条件表达式"
+          },
+          {
+            "name": "maxLoops",
+            "type": "number",
+            "showIf": { "metric": "loop" },
+            "description": "设置最大循环次数"
+          }
+        ]
+      },
+      "crm": {
+        "label": "",
+        "description": "",
+        "logic": "rfm",
+        "required": true,
+        "fields": [
+          {
+            "name": "logic",
+            "type": "select",
+            "options": ["rfm", "status_change"],
+            "required": true,
+            "description": "选择CRM逻辑类型"
+          }
+        ]
+      },
+      "ecommerce": {
+        "label": "",
+        "description": "",
+        "condition": "abandoned_cart",
+        "required": true,
+        "fields": [
+          {
+            "name": "condition",
+            "type": "select",
+            "options": ["abandoned_cart", "order_status"],
+            "required": true,
+            "description": "选择电商触发条件"
+          }
+        ]
+      }
+    }
+  }

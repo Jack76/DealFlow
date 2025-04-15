@@ -1,0 +1,642 @@
+/* src/styles/automation-editor.css */
+
+/* 弹窗样式 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    width: 90%;
+    height: 90%;
+    background: var(--sys-background);
+    border-radius: var(--mat-sys-corner-large);
+    box-shadow: var(--sys-shadow-elevated);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .automation-editor-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* 顶部导航栏 */
+  .editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: var(--sys-surface);
+    box-shadow: var(--sys-shadow);
+    border-bottom: 1px solid var(--sys-outline);
+  }
+  
+  .header-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .workflow-name-input {
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    color: var(--sys-on-surface);
+    padding: 8px;
+    border-radius: var(--mat-sys-corner-medium);
+    min-width: 200px;
+  }
+  
+  .workflow-name-input:focus {
+    background: var(--sys-surface-container-low);
+  }
+  
+  .workflow-version {
+    font-size: 14px;
+    color: var(--sys-on-surface-variant);
+  }
+  
+  .header-actions {
+    display: flex;
+    gap: 12px;
+  }
+  
+  
+  
+  /* 主内容区域 */
+  .editor-main {
+    flex: 1;
+    display: flex;
+    position: relative;
+  }
+  
+  /* 左侧工具栏 */
+  .tools-sidebar {
+    width: 300px;
+    height: 100%;
+    background: var(--sys-surface-container);
+    border-right: 1px solid var(--sys-outline);
+    transition: width 0.3s ease;
+    position: relative;
+  }
+  
+  .tools-sidebar.collapsed {
+    width: 50px;
+  }
+  
+  .sidebar-toggle {
+    position: absolute;
+    top: 10px;
+    right: -12px;
+    width: 24px;
+    height: 24px;
+    background: var(--sys-primary);
+    color: var(--sys-on-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .tools-content {
+    padding: 16px;
+    max-height: calc(100% - 48px);
+    overflow-y: auto;
+  }
+  
+  .search-container {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--sys-on-surface-variant);
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    border: 1px solid var(--sys-outline);
+    border-radius: var(--mat-sys-corner-medium);
+    font-size: 14px;
+    background: var(--sys-surface);
+    color: var(--sys-on-surface);
+  }
+  
+  .category-section {
+    margin-bottom: 12px;
+  }
+  
+  .category-header {
+    padding: 8px 12px;
+    background: var(--sys-surface-container-low);
+    border-radius: var(--mat-sys-corner-medium);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: var(--sys-on-surface);
+  }
+  
+  .category-header:hover {
+    background: var(--sys-surface-container);
+  }
+  
+  .category-items {
+    padding-left: 16px;
+  }
+  
+  .tool-item {
+    padding: 10px 12px;
+    background: var(--sys-surface-container-low);
+    border-radius: var(--mat-sys-corner-medium);
+    margin-bottom: 8px;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  
+  .tool-item:hover {
+    background: var(--sys-surface-container);
+    transform: translateX(4px);
+  }
+  
+  /* 中央画布 */
+  .react-flow-wrapper {
+    flex: 1;
+    height: 100%;
+    background: #f0f2f5;
+  }
+  
+  .react-flow__node {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .react-flow__node:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .react-flow__edge-path {
+    stroke: #888;
+    stroke-width: 2;
+    stroke-dasharray: 5;
+    animation: dash 1.5s linear infinite;
+  }
+  
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -10;
+    }
+  }
+  
+  /* 自定义节点样式 */
+  .custom-node {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: var(--mat-sys-corner-medium);
+    background: var(--sys-surface);
+    box-shadow: var(--sys-shadow);
+  }
+  
+  .node-content {
+    margin-left: 8px;
+    text-align: left;
+  }
+  
+  .node-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--sys-on-surface);
+  }
+  
+  .node-summary {
+    font-size: 12px;
+    color: var(--sys-on-surface-variant);
+  }
+  
+  .trigger-node {
+    border: 2px solid var(--sys-success);
+  }
+  
+  .action-node {
+    border: 2px solid var(--sys-primary);
+  }
+  
+  .condition-node {
+    border: 2px solid var(--sys-warning);
+  }
+  
+  .advanced-node {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 2px solid var(--sys-tertiary);
+  }
+  
+  /* 右侧属性面板 */
+  .properties-panel {
+    width: 300px;
+    background: var(--sys-surface);
+    border-left: 1px solid var(--sys-outline);
+    padding: 16px;
+    overflow-y: auto;
+  }
+  
+  .properties-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--sys-on-surface);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .node-type-badge {
+    font-size: 12px;
+    padding: 2px 6px;
+    background: var(--sys-surface-container-low);
+    border-radius: 4px;
+  }
+  
+  .property-field {
+    margin-bottom: 16px;
+  }
+  
+  .property-field label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: var(--sys-on-surface-variant);
+  }
+  
+  .property-field .required {
+    color: var(--sys-error);
+  }
+  
+  .property-field input,
+  .property-field select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--sys-outline);
+    border-radius: var(--mat-sys-corner-medium);
+    font-size: 14px;
+    background: var(--sys-surface);
+    color: var(--sys-on-surface);
+  }
+  
+  .property-field select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="%23444746" d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+  }
+  
+  .property-hint {
+    font-size: 12px;
+    color: var(--sys-on-surface-variant);
+    margin-top: 4px;
+  }
+  
+  .panel-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  
+/* AI面板 */
+.ai-panel {
+    background: var(--sys-surface);
+    padding: 16px; /* 增加内边距 */
+    border-radius: var(--mat-sys-corner-medium);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* 加深阴影效果 */
+    width: 350px; /* 稍微加宽 */
+    margin-bottom: 20px;
+    margin-right: 20px;
+    border: 1px solid var(--sys-outline); /* 添加边框 */
+  }
+  
+  .ai-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .ai-panel h4 {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .ai-close-btn {
+    cursor: pointer;
+    color: var(--sys-on-surface-variant);
+    font-size: 18px;
+  }
+  
+  .ai-close-btn:hover {
+    color: var(--sys-primary);
+  }
+  
+  .ai-input {
+    display: flex;
+    flex-direction: column; /* 改为垂直布局 */
+    gap: 12px; /* 增加间距 */
+    margin-bottom: 16px;
+  }
+  
+  .ai-input input {
+    width: 100%;
+    padding: 12px 16px; /* 更大的内边距 */
+    border: 1px solid var(--sys-outline);
+    border-radius: var(--mat-sys-corner-medium);
+    font-size: 14px;
+    min-height: 48px; /* 设置最小高度 */
+  }
+
+  .ai-input textarea {
+   
+    min-height: 100px; /* 文本区域高度 */
+    padding: 12px;
+    border: 1px solid var(--sys-outline);
+    border-radius: var(--mat-sys-corner-medium);
+    resize: vertical;
+    font-size: 14px;
+  }
+
+  .ai-input button{
+    align-self: flex-start;
+  }
+  
+  .ai-suggestions {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  /* 更新AI建议区域样式 */
+.ai-suggestions {
+  max-height: 300px; /* 增加最大高度 */
+  overflow-y: auto;
+  background: var(--sys-surface-container-low);
+  border-radius: var(--mat-sys-corner-medium);
+  padding: 8px;
+  margin-top: 12px;
+}
+
+.ai-suggestion {
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--mat-sys-corner-small);
+  margin-bottom: 4px;
+  transition: all 0.2s;
+}
+
+.ai-suggestion:hover {
+  background: color-mix(in srgb, var(--sys-primary) 10%, transparent);
+}
+  
+  /* 顶部关闭按钮样式 */
+  .modal-content .close-btn {
+    position: static;
+    cursor: pointer;
+    color: var(--sys-on-surface-variant);
+    font-size: 18px;
+    padding: 8px;
+    transition: color 0.2s, background 0.2s;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sys-surface);
+    color: var(--sys-on-surface);
+    z-index: 1001;
+  }
+  
+  .modal-content .close-btn:hover {
+    color: var(--sys-primary);
+    background: var(--sys-surface-container-low);
+  }
+  /* 模板管理面板 */
+  .template-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--sys-surface);
+    width: 60%;
+    max-height: 80vh;
+    padding: 20px;
+    border-radius: var(--mat-sys-corner-large);
+    z-index: 100;
+    overflow-y: auto;
+  }
+  
+  .template-header h3 {
+    margin-bottom: 16px;
+  }
+  
+  .template-categories {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  
+  .template-card {
+    padding: 12px;
+    border: 1px solid var(--sys-outline);
+    border-radius: var(--mat-sys-corner-medium);
+    cursor: pointer;
+  }
+  
+  .template-card:hover {
+    border-color: var(--sys-primary);
+  }
+  
+  .template-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+  }
+  
+  /* 通知样式 */
+  .notifications {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 20;
+  }
+  
+  .notification {
+    padding: 8px 16px;
+    margin-bottom: 8px;
+    border-radius: var(--mat-sys-corner-medium);
+    color: var(--sys-on-surface);
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  .notification.success {
+    background: var(--sys-success);
+    color: var(--sys-on-primary);
+  }
+  
+  .notification.error {
+    background: var(--sys-error);
+    color: var(--sys-on-error);
+  }
+  
+  .notification.info {
+    background: var(--sys-surface-container);
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+ /* 新增节点样式 */
+.crm-node {
+    border: 2px solid #6a1b9a;
+    background: color-mix(in srgb, #6a1b9a 10%, white);
+  }
+  
+  .ecommerce-node {
+    border: 2px solid #ff8f00;
+    background: color-mix(in srgb, #ff8f00 10%, white);
+  }
+  
+  
+  /* AI 面板样式增强 */
+.ai-panel {
+    background: var(--sys-surface);
+    padding: 12px;
+    border-radius: var(--mat-sys-corner-medium);
+    box-shadow: var(--sys-shadow);
+    width: 320px;
+    margin-bottom: 20px;
+  }
+  
+  .ai-input {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .ai-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--sys-outline);
+    border-radius: var(--mat-sys-corner-medium);
+    font-size: 14px;
+  }
+  
+  .suggestion-title {
+    font-size: 13px;
+    color: var(--sys-on-surface-variant);
+    margin-bottom: 8px;
+  }
+  
+  /* 更新模板按钮样式 */
+.template-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  
+  .template-buttons button {
+    background: var(--sys-surface-container-low);
+    border: 1px solid var(--sys-outline);
+    border-radius: 16px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  
+  .template-buttons button:hover {
+    background: var(--sys-primary);
+    color: var(--sys-on-primary);
+    border-color: var(--sys-primary);
+  }
+
+  /* 主内容区域 - 确保使用弹性布局并正确处理高度 */
+.editor-main {
+    flex: 1;
+    display: flex;
+    position: relative;
+    min-height: 0; /* 关键修复 - 允许内部元素收缩 */
+    overflow: hidden; /* 防止内容溢出 */
+  }
+  
+  /* 左侧工具栏 - 调整高度继承 */
+  .tools-sidebar {
+    width: 300px;
+    height: 100%; /* 继承父容器高度 */
+    background: var(--sys-surface-container);
+    border-right: 1px solid var(--sys-outline);
+    display: flex;
+    flex-direction: column; /* 改为列布局 */
+    position: relative;
+  }
+  
+  /* 工具内容区域 - 添加滚动 */
+  .tools-content {
+    flex: 1; /* 占据剩余空间 */
+    padding: 16px;
+    overflow-y: auto; /* 添加滚动 */
+    min-height: 0; /* 关键修复 - 允许收缩 */
+  }
+  
+  /* 折叠状态调整 */
+  .tools-sidebar.collapsed {
+    width: 50px;
+  }
+  
+  /* 确保搜索框不随内容滚动 */
+  .search-container {
+    position: sticky;
+    top: 0;
+    /*background: var(--sys-surface-container);*/
+    z-index: 1;
+  }

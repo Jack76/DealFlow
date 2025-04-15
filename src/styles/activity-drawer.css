@@ -1,0 +1,258 @@
+/* 基础容器 */
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .drawer-content {
+    width: 600px;
+    height: 100vh;
+    background: #f8fafd;
+    overflow-y: auto;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .drawer-title {
+    padding: 20px 24px 16px;
+    margin: 0;
+    font-size: 20px;
+    color: #202124;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #5f6368;
+    z-index: 1;
+  }
+  
+  /* 内容区域 */
+  .activity-detail-container {
+    padding: 0;
+  }
+  
+  .content-section {
+    background: white;
+    margin: 16px;
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+  }
+  
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: #202124;
+    margin: 0 0 16px 0;
+  }
+  
+  /* 通话录音部分 */
+  .audio-section {
+    margin-bottom: 24px;
+  }
+  
+  .audio-player {
+    width: 100%;
+    margin-top: 12px;
+  }
+  
+  .audio-player audio {
+    width: 100%;
+  }
+  
+  .audio-meta {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #5f6368;
+  }
+  
+  /* 文字记录 */
+  .transcript-content {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 16px;
+    max-height: 300px;
+    overflow-y: auto;
+    line-height: 1.6;
+  }
+  
+  .transcript-content p {
+    margin: 0 0 8px 0;
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+  
+  .rep-line {
+    background: rgba(66, 133, 244, 0.08);
+    border-left: 3px solid #4285f4;
+  }
+  
+  .customer-line {
+    background: rgba(52, 168, 83, 0.08);
+    border-left: 3px solid #34a853;
+  }
+  
+  /* 邮件样式 */
+  .email-content .email-header {
+    display: flex;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 16px;
+  }
+  
+  .sender-avatar {
+    width: 40px;
+    height: 40px;
+    background: #4285f4;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  
+  .email-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+    color: #5f6368;
+    align-items: center;
+  }
+  
+  .attachment-badge {
+    margin-left: auto;
+    background: #f1f3f4;
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .email-body pre {
+    white-space: pre-wrap;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  /* AI分析区域 */
+  .ai-analysis-section {
+    background: white;
+    margin: 16px;
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+  }
+  
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  
+  .metric-card {
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .metric-value {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  
+  .metric-label {
+    font-size: 13px;
+    color: #5f6368;
+  }
+  
+  .metric-trend {
+    font-size: 12px;
+    color: #5f6368;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 4px;
+  }
+  
+  /* 关键词云 */
+  .keyword-section {
+    margin: 24px 0;
+  }
+  
+  .keyword-section h4 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #5f6368;
+  }
+  
+  .keyword-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .keyword-tag {
+    background: #e8f0fe;
+    color: #4285f4;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  /* 行动项 */
+  .action-items {
+    margin-top: 24px;
+  }
+  
+  .action-items h4 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #5f6368;
+  }
+  
+  .action-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px dashed #e0e0e0;
+  }
+  
+  .action-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* 动画 */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }

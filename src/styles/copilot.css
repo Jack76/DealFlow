@@ -1,0 +1,227 @@
+/* AI Copilot Panel Styles */
+.copilot-panel {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 350px;
+    height: calc(100vh - 60px);
+    background: var(--sys-surface-container-low);
+    border-left: 1px solid var(--sys-outline);
+    display: flex;
+    flex-direction: column;
+    z-index: 900;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .copilot-panel.collapsed {
+    transform: translateX(100%);
+  }
+  
+  .copilot-panel.expanded {
+    transform: translateX(0);
+  }
+  
+  /* Floating Toggle Button */
+  .floating-toggle {
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--sys-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 899;
+    transition: transform 0.2s;
+  }
+  
+  .floating-toggle:hover {
+    transform: scale(1.1);
+  }
+  
+  .floating-toggle .material-icons {
+    font-size: 24px;
+  }
+  
+  /* Panel Header */
+  .panel-header {
+    height: 48px;
+    background: var(--sys-primary-container);
+    color: var(--sys-on-primary-container);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    user-select: none;
+  }
+  
+  .panel-header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .panel-header h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .panel-header .material-icons {
+    font-size: 20px;
+  }
+  
+  .panel-close-btn {
+    background: none;
+    border: none;
+    color: var(--sys-on-primary-container);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  
+  .panel-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Message Container */
+  .message-container {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    background: var(--sys-surface);
+  }
+  
+  /* Message Bubbles */
+  .message {
+    display: flex;
+    margin-bottom: 16px;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .message.ai {
+    flex-direction: row;
+  }
+  
+  .message.user {
+    flex-direction: row-reverse;
+  }
+  
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--sys-primary-container);
+    color: var(--sys-on-primary-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 8px;
+    flex-shrink: 0;
+  }
+  
+  .message.user .avatar {
+    background: var(--sys-secondary-container);
+    color: var(--sys-on-secondary-container);
+  }
+  
+  .content {
+    max-width: calc(100% - 48px);
+    padding: 12px 16px;
+    border-radius: 12px;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+  
+  .message.ai .content {
+    background: var(--sys-surface-container);
+    border-top-left-radius: 4px;
+    color: var(--sys-on-surface);
+  }
+  
+  .message.user .content {
+    background: var(--sys-primary);
+    color: white;
+    border-top-right-radius: 4px;
+  }
+  
+  .content p {
+    margin: 8px 0;
+  }
+  
+  .content strong {
+    color: inherit;
+    font-weight: 600;
+  }
+  
+  /* Input Area */
+  .input-area {
+    padding: 16px;
+    background: var(--sys-surface);
+    border-top: 1px solid var(--sys-outline);
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-area input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid var(--sys-outline);
+    border-radius: 24px;
+    outline: none;
+    font-size: 14px;
+    background: var(--sys-surface);
+    color: var(--sys-on-surface);
+  }
+  
+  .input-area button {
+    width: 40px;
+    height: 40px;
+    background: var(--sys-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+  }
+  
+  .input-area button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Scrollbar */
+  .message-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .message-container::-webkit-scrollbar-thumb {
+    background: var(--sys-outline);
+    border-radius: 3px;
+  }
+  
+  @media (max-width: 768px) {
+    .copilot-panel {
+      width: 100%;
+      max-width: 350px;
+    }
+  }

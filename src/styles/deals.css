@@ -1,0 +1,640 @@
+/* src/styles/deals.css */
+
+.deals-modern-container {
+    padding: 20px;
+  }
+  
+  /* 头部样式 */
+  .deals-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--sys-on-surface);
+  }
+  
+  .view-toggle {
+    display: flex;
+    background: var(--sys-surface-container-low);
+    border-radius: var(--mat-sys-corner-extra-large);
+    padding: 4px;
+  }
+  
+  .view-btn {
+    border: none;
+    background: transparent;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--sys-on-surface-variant);
+    transition: all 0.2s;
+  }
+  
+  .view-btn.active {
+    background: var(--sys-surface);
+    color: var(--sys-primary);
+    box-shadow: var(--sys-shadow);
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .bulk-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: 12px;
+  }
+  
+  .button.danger {
+    background-color: var(--sys-error);
+    color: var(--sys-on-error);
+  }
+  
+  .button.danger:hover {
+    background-color: color-mix(in srgb, var(--sys-error) 90%, black);
+  }
+  
+  /* 统计卡片 */
+  .metrics-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .metric-card {
+    background: var(--sys-surface);
+    border-radius: var(--mat-sys-corner-large);
+    padding: 16px;
+    box-shadow: var(--sys-shadow-elevated);
+  }
+  
+  .metric-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--sys-body-medium-size);
+    color: var(--sys-on-surface-variant);
+    margin-bottom: 12px;
+  }
+  
+  .metric-header .material-icons {
+    font-size: 20px;
+  }
+  
+  .metric-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--sys-on-surface);
+  }
+  
+  .metric-chart {
+    height: 80px;
+    margin-top: 8px;
+  }
+
+  /* 更新统计卡片布局 */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .metric-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--sys-on-surface);
+  }
+  
+  .chart-container {
+    height: 100px; /* 增加高度 */
+    position: relative; /* 为图表提供定位上下文 */
+}
+
+/* 确保图表容器有足够空间 */
+.metric-chart {
+  height: 100%;
+  width: 100%;
+}
+  
+  /* 过滤区域 */
+  .filters-section {
+    background: var(--sys-surface);
+    border-radius: var(--mat-sys-corner-large);
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: var(--sys-shadow-elevated);
+  }
+  
+  .search-container {
+    position: relative;
+    /*margin-bottom: 12px;*/
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--sys-on-surface-variant);
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px 16px 10px 40px;
+    border: 1px solid var(--sys-outline);
+    border-radius: var(--mat-sys-corner-extra-large);
+    background: var(--sys-surface);
+    color: var(--sys-on-surface);
+    font-size: var(--sys-body-medium-size);
+    transition: border-color 0.2s;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: var(--sys-primary);
+  }
+  
+  .filter-group {
+    margin-top: 12px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .filter-select {
+    padding: 8px 32px 8px 12px;
+    border: 1px solid var(--sys-outline);
+    border-radius: var(--mat-sys-corner-extra-large);
+    background: var(--sys-surface);
+    color: var(--sys-on-surface);
+    font-size: var(--sys-body-small-size);
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="%23444746" d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+  }
+  
+  .amount-range {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .amount-input {
+    width: 100px;
+    padding: 8px 12px;
+    border: 1px solid var(--sys-outline);
+    border-radius: var(--mat-sys-corner-extra-large);
+    background: var(--sys-surface);
+    color: var(--sys-on-surface);
+    font-size: var(--sys-body-small-size);
+  }
+  
+  .filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--sys-body-small-size);
+    cursor: pointer;
+  }
+  
+  .checkbox-label {
+    color: var(--sys-on-surface-variant);
+  }
+  
+  /* 表格样式 */
+  .deals-table-container {
+    overflow-x: auto;
+    margin-bottom: 20px;
+    background: var(--sys-surface);
+    border-radius: var(--mat-sys-corner-large);
+    box-shadow: var(--sys-shadow-elevated);
+  }
+  
+  .deals-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .deals-table th {
+    padding: 16px;
+    text-align: left;
+    font-size: var(--sys-body-small-size);
+    font-weight: 600;
+    color: var(--sys-on-surface-variant);
+    background: var(--sys-surface-container-low);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .table-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+  
+  .sort-icon {
+    font-size: 16px;
+    transition: transform 0.2s;
+  }
+  
+  .deals-row {
+    border-bottom: 1px solid var(--sys-outline);
+    transition: background 0.2s;
+  }
+  
+  .deals-row:hover {
+    background: var(--sys-surface-container-low);
+  }
+  
+  .deals-row td {
+    padding: 16px;
+    font-size: var(--sys-body-small-size);
+    color: var(--sys-on-surface);
+    vertical-align: middle;
+  }
+  
+  .deal-link {
+    color: var(--sys-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .deal-link:hover {
+    text-decoration: underline;
+  }
+  
+  .deal-subtext {
+    font-size: 12px;
+    color: var(--sys-on-surface-variant);
+    margin-top: 4px;
+  }
+  
+  .stage-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .stage-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  
+  .days-in-stage {
+    color: var(--sys-on-surface-variant);
+    font-size: 12px;
+  }
+  
+  .health-bar {
+    height: 24px;
+    background: var(--sys-surface-container-low);
+    border-radius: var(--mat-sys-corner-extra-large);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .health-fill {
+    height: 100%;
+    border-radius: var(--mat-sys-corner-extra-large);
+    transition: width 0.3s;
+  }
+  
+  .health-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+  }
+  
+  .probability-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    background: var(--sys-surface-container-low);
+    border-radius: var(--mat-sys-corner-extra-large);
+    font-size: 12px;
+    margin-left: 6px;
+  }
+  
+  .date-cell, .owner-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .icon-button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--sys-on-surface-variant);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .icon-button:hover {
+    background: var(--sys-surface-container-low);
+    color: var(--sys-primary);
+  }
+  
+  /* 网格视图 */
+  .deals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .deal-card {
+    background: var(--sys-surface);
+    border-radius: var(--mat-sys-corner-large);
+    padding: 16px;
+    box-shadow: var(--sys-shadow-elevated);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .deal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .card-header input[type="checkbox"] {
+    flex-shrink: 0;
+  }
+  
+  .deal-name {
+    flex: 1;
+    margin: 0;
+    font-size: var(--sys-body-large-size);
+    font-weight: 600;
+  }
+  
+  .deal-name a {
+    color: var(--sys-on-surface);
+    text-decoration: none;
+  }
+  
+  .deal-name a:hover {
+    color: var(--sys-primary);
+  }
+  
+  .deal-amount {
+    font-weight: 600;
+    color: var(--sys-primary);
+  }
+  
+  .card-body {
+    margin: 16px 0;
+  }
+  
+  .deal-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .health-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .score-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    position: relative;
+  }
+  
+  .score-circle::before {
+    content: '';
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--sys-surface);
+  }
+  
+  .score-circle span {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .health-score span {
+    font-size: 12px;
+    color: var(--sys-on-surface-variant);
+    margin-top: 4px;
+  }
+  
+  .deal-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .detail-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--sys-body-small-size);
+    color: var(--sys-on-surface-variant);
+  }
+  
+  .next-step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--sys-body-small-size);
+    color: var(--sys-primary);
+    font-weight: 500;
+    padding: 8px;
+    background: var(--sys-surface-container-low);
+    border-radius: var(--mat-sys-corner-medium);
+  }
+  
+  .card-footer {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .button.small {
+    padding: 6px 12px;
+    font-size: var(--sys-body-small-size);
+  }
+
+  /* 隐藏表格中的健康条 */
+.deals-table .health-bar-container {
+  display: none;
+}
+
+/* 调整健康分数显示 */
+.deals-table .health-indicator {
+  justify-content: flex-start;
+}
+  
+  /* 分页和统计 */
+  .deals-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+  }
+  
+  .results-count {
+    font-size: var(--sys-body-small-size);
+    color: var(--sys-on-surface-variant);
+  }
+  
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .pagination-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--sys-on-surface-variant);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .pagination-button:hover:not(:disabled) {
+    background: var(--sys-surface-container-low);
+    color: var(--sys-primary);
+  }
+  
+  .pagination-button.active {
+    background: var(--sys-primary);
+    color: var(--sys-on-primary);
+  }
+  
+  .pagination-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .pagination-ellipsis {
+    padding: 0 8px;
+    color: var(--sys-on-surface-variant);
+  }
+  
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+    .metrics-cards {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .filter-group {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .amount-range {
+      width: 100%;
+    }
+    
+    .amount-input {
+      flex: 1;
+    }
+    
+    .deals-footer {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .metrics-cards {
+      grid-template-columns: 1fr;
+    }
+    
+    .deals-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .header-right {
+      width: 100%;
+      justify-content: space-between;
+    }
+    
+    .bulk-actions {
+      margin-left: auto;
+    }
+  }
+
+  .table-card {
+    padding: 0;
+  }
+  
+  .deals-table .health-indicator-container {
+    width: 100px;
+  }
+  
+  @media (max-width: 768px) {
+    .deals-modern-container {
+      padding: 10px;
+    }
+  }

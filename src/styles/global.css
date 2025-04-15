@@ -1,0 +1,78 @@
+/* src/styles/global.css */
+
+@import url('./components.css');
+@import url('./navbar.css');
+@import url('./sidebar.css'); 
+@import url('./deals.css');
+@import url('./deal-detail.css');
+@import url('./health-indicator.css');
+@import url('./automation-list.css');
+@import url('./automation-editor.css');
+@import url('./workflow-creation-choice.css');
+
+:root {
+  --sys-background: #f8f9fa;
+  --sys-error: #b3261e;
+  --sys-success: #34A853;
+  --sys-warning: #FBBC05;
+  --sys-danger: #EA4335;
+  --sys-error-container: #f9dedc;
+  --sys-inverse-on-surface: #f2f2f2;
+  --sys-inverse-primary: #a8c7fa;
+  --sys-inverse-surface: #303030;
+  --sys-on-background: #1f1f1f;
+  --sys-on-error: #fff;
+  --sys-on-primary: #fff;
+  --sys-on-primary-container: #041e49;
+  --sys-on-secondary: #fff;
+  --sys-on-surface: #1f1f1f;
+  --sys-on-surface-variant: #444746;
+  --sys-outline: #e0e0e0;
+  --sys-primary: #0b57d0;
+  --sys-primary-container: #ffffff;
+  --sys-secondary: #00639b;
+  --sys-secondary-container: #c2e7ff;
+  --sys-surface: #fff;
+  --sys-surface-container: #f4f6fa;
+  --sys-surface-container-low: #f8fafd;
+  --sys-body-large: 400 1rem / 1.5rem -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sys-body-large-size: 1rem;
+  --sys-body-medium: 400 0.875rem / 1.25rem -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sys-body-medium-size: 0.875rem;
+  --sys-body-small: 400 0.75rem / 1rem -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sys-body-small-size: 0.75rem;
+  --sys-headline-large: 400 2rem / 2.5rem -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sys-headline-large-size: 2rem;
+  --sys-headline-medium: 400 1.5rem / 2rem -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sys-headline-medium-size: 1.5rem;
+  --mat-sys-corner-large: 16px;
+  --mat-sys-corner-medium: 12px;
+  --mat-sys-corner-small: 8px;
+  --mat-sys-corner-extra-large: 25px;
+  --sys-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  --sys-shadow-elevated: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--sys-background);
+    color: var(--sys-on-surface);
+    font-size: var(--sys-body-medium-size);
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  color: var(--sys-on-background);
+}
+
+input:focus,
+button:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--sys-primary) 30%, transparent);
+}
+
+input::placeholder {
+  color: var(--sys-on-surface-variant);
+}

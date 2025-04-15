@@ -1,0 +1,399 @@
+/* src/styles/deal-detail.css */
+
+.deal-detail-container {
+  padding: 20px;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative; /* 为AI面板定位提供上下文 */
+}
+
+/* 头部样式 */
+.deal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--sys-primary);
+  text-decoration: none;
+  font-size: var(--sys-body-medium-size);
+  margin-bottom: 15px;
+  transition: color 0.2s;
+}
+
+.back-button:hover {
+  color: color-mix(in srgb, var(--sys-primary) 80%, black);
+}
+
+.deal-title-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.deal-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--sys-on-surface);
+}
+
+.deal-id {
+  font-size: var(--sys-body-small-size);
+  color: var(--sys-on-surface-variant);
+  background: var(--sys-surface-container-low);
+  padding: 4px 8px;
+  border-radius: var(--mat-sys-corner-small);
+}
+
+.deal-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: var(--sys-body-medium-size);
+  color: var(--sys-on-surface-variant);
+}
+
+.deal-owner, .deal-stage, .deal-amount {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.stage-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.deal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* 主要内容布局 */
+.deal-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .deal-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 基本信息卡片 */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.info-item {
+  margin-bottom: 15px;
+}
+
+.info-item label {
+  display: block;
+  font-size: var(--sys-body-small-size);
+  color: var(--sys-on-surface-variant);
+  margin-bottom: 5px;
+}
+
+.info-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.probability-bar {
+  height: 24px;
+  background: var(--sys-surface-container-low);
+  border-radius: var(--mat-sys-corner-extra-large);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.probability-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: var(--mat-sys-corner-extra-large);
+  opacity: 0.2;
+}
+
+.probability-bar span {
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+}
+
+.days-remaining {
+  font-size: var(--sys-body-small-size);
+  color: var(--sys-on-surface-variant);
+}
+
+/* 时间线卡片 */
+.timeline-list {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline-list::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--sys-outline);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.timeline-badge {
+  position: absolute;
+  left: -30px;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--sys-primary-container);
+  color: var(--sys-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-content {
+  background: var(--sys-surface-container-low);
+  border-radius: var(--mat-sys-corner-medium);
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.timeline-content:hover {
+  background-color: rgba(66, 133, 244, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: var(--sys-body-small-size);
+}
+
+.timeline-date {
+  color: var(--sys-on-surface-variant);
+}
+
+.timeline-type {
+  font-weight: 500;
+}
+
+.timeline-summary {
+  margin: 0 0 10px 0;
+  font-size: var(--sys-body-medium-size);
+}
+
+.timeline-meta {
+  display: flex;
+  gap: 15px;
+  font-size: var(--sys-body-small-size);
+  color: var(--sys-on-surface-variant);
+}
+
+.timeline-meta span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.sentiment-indicator {
+  color: var(--sys-primary);
+}
+
+.warning-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.warning-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  color: var(--sys-error);
+}
+
+.health-positive {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--sys-success);
+  font-weight: 500;
+}
+
+/* 分析卡片 */
+.analysis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 16px;
+}
+
+.analysis-item {
+  margin-bottom: 20px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  background: var(--sys-surface-container-low);
+  border-radius: var(--mat-sys-corner-medium);
+}
+
+/* 下一步行动卡片 */
+.next-steps-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.next-step {
+  margin: 0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* 团队协作卡片 */
+.comment-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--sys-outline);
+  border-radius: var(--mat-sys-corner-medium);
+  margin-bottom: 10px;
+  resize: none;
+  font-family: inherit;
+}
+
+.comments-list {
+  margin-top: 20px;
+}
+
+.comment-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--sys-outline);
+}
+
+.comment-avatar .material-icons {
+  font-size: 32px;
+  color: var(--sys-on-surface-variant);
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.comment-user {
+  font-weight: 500;
+}
+
+.comment-time {
+  font-size: var(--sys-body-small-size);
+  color: var(--sys-on-surface-variant);
+}
+
+.comment-text {
+  margin: 0;
+  font-size: var(--sys-body-medium-size);
+}
+
+/* 统一图表容器样式 */
+.chart-container {
+  height: 180px;
+  position: relative;
+  margin: 10px 0;
+}
+
+/* 健康度图表特殊调整 */
+.health-container .chart-container {
+  height: 120px;
+}
+
+.deal-health-indicator {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.deal-chart-container {
+  height: 150px;
+}
+
+.warnings-container {
+  margin-top: 12px;
+}
+
+.health-positive {
+  margin-top: 8px;
+}
+
+/* AI Assistant Floating Container */
+.ai-assistant-floating {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  z-index: 900;
+}
+
+@media (max-width: 768px) {
+  .deal-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .ai-assistant-floating {
+    /* 确保在小屏幕上也能正常显示 */
+    top: 60px;
+    right: 0;
+  }
+}

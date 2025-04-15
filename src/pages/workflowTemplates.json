@@ -1,0 +1,70 @@
+
+[
+    {
+      "id": "template1",
+      "name": "Welcome Campaign",
+      "nodes": [
+        {
+          "id": "1",
+          "type": "trigger",
+          "position": { "x": 250, "y": 50 },
+          "data": { "label": "User Registers" }
+        },
+        {
+          "id": "2",
+          "type": "action",
+          "position": { "x": 250, "y": 150 },
+          "data": { "label": "Send Welcome Email" }
+        }
+      ],
+      "edges": [{ "id": "e1-2", "source": "1", "target": "2" }]
+    },
+    {
+      "id": "template2",
+      "name": "Re-engagement Flow",
+      "nodes": [
+        {
+          "id": "1",
+          "type": "trigger",
+          "position": { "x": 250, "y": 50 },
+          "data": { "label": "Inactivity > 30d" }
+        },
+        {
+          "id": "2",
+          "type": "action",
+          "position": { "x": 250, "y": 150 },
+          "data": { "label": "Send Reminder Email" }
+        }
+      ],
+      "edges": [{ "id": "e1-2", "source": "1", "target": "2" }]
+    },
+    {
+      "id": "template3",
+      "name": "RFM营销流程",
+      "nodes": [
+        {
+          "id": "1",
+          "type": "crm",
+          "position": { "x": 250, "y": 50 },
+          "data": {
+            "label": "RFM客户分群",
+            "logic": "rfm",
+            "r": 30,
+            "f": 3,
+            "m": 500
+          }
+        },
+        {
+          "id": "2",
+          "type": "action",
+          "position": { "x": 250, "y": 150 },
+          "data": {
+            "label": "发送专属优惠",
+            "actionType": "push",
+            "message": "尊敬的VIP客户，这是您的专属优惠!"
+          }
+        }
+      ],
+      "edges": [{ "id": "e1-2", "source": "1", "target": "2" }]
+    }
+  ]

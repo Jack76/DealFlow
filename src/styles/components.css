@@ -1,0 +1,189 @@
+/* src/styles/components.css */
+
+/* 更新后的components.css卡片部分 */
+.card {
+  background: var(--sys-surface);
+  border-radius: var(--mat-sys-corner-large);
+  padding: 16px;
+  box-shadow: var(--sys-shadow-elevated);
+  margin-bottom: 16px;
+  border: 1px solid var(--sys-outline);
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--sys-body-large-size);
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  color: var(--sys-on-surface);
+}
+
+.card-title .material-icons {
+  color: var(--sys-primary);
+}
+
+.card-content {
+  color: var(--sys-on-surface-variant);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+  
+/* 主按钮 (Primary Button) */
+.button.primary {
+  padding: 10px 24px 10px 22px;
+  background: var(--sys-primary);
+  color: var(--sys-on-primary);
+  border: none;
+  border-radius: var(--mat-sys-corner-extra-large);
+  cursor: pointer;
+  font-size: var(--sys-body-medium-size);
+  font-weight: 600;
+  box-shadow: var(--sys-shadow);
+  transition: background 0.3s ease, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.button.primary:hover {
+  background: color-mix(in srgb, var(--sys-primary) 90%, black);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* 次级按钮 (Secondary Button) */
+.button.secondary {
+  padding: 10px 24px 10px 22px;
+  background: var(--sys-surface);
+  color: var(--sys-primary);
+  border: 1px solid var(--sys-primary);
+  border-radius: var(--mat-sys-corner-extra-large);
+  cursor: pointer;
+  font-size: var(--sys-body-medium-size);
+  font-weight: 600;
+  transition: background 0.3s ease, color 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.button.secondary:hover {
+  background: color-mix(in srgb, var(--sys-primary) 10%, white);
+  color: color-mix(in srgb, var(--sys-primary) 90%, black);
+  border-color: color-mix(in srgb, var(--sys-primary) 90%, black);
+}
+
+/* 危险按钮 (Danger Button) */
+.button.danger {
+  padding: 10px 24px 10px 22px;
+  background: var(--sys-error);
+  color: var(--sys-on-error);
+  border: none;
+  border-radius: var(--mat-sys-corner-extra-large);
+  cursor: pointer;
+  font-size: var(--sys-body-medium-size);
+  font-weight: 600;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.button.danger:hover {
+  background: color-mix(in srgb, var(--sys-error) 90%, black);
+}
+  
+  /* 文字按钮 (Text Button) */
+  .button.text {
+    padding: 10px 24px 10px 22px; /* 左侧减少2px，从24px到22px */
+    background: none;
+    color: var(--sys-primary);
+    border: none;
+    border-radius: var(--mat-sys-corner-extra-large);
+    cursor: pointer;
+    font-size: var(--sys-body-medium-size);
+    font-weight: 600;
+    transition: color 0.2s, background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .button.text:hover {
+    background: var(--sys-surface-container-low);
+    color: color-mix(in srgb, var(--sys-primary) 90%, black);
+  }
+
+  /* 新增email按钮专用样式 */
+.button.email {
+  background: var(--sys-surface);
+  color: var(--sys-primary);
+  border: 1px solid var(--sys-outline);
+}
+
+/* 卡片内禁用主按钮样式 */
+.card .button.primary {
+  background: var(--sys-surface-container-low);
+  color: var(--sys-primary);
+  box-shadow: none;
+}
+  
+  /* Material Icons */
+  .material-icons {
+    font-size: 18px;
+    vertical-align: middle;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
+  .navbar .material-icons {
+    font-size: 20px;
+    color: color-mix(in srgb, var(--sys-on-primary-container) 80%, white);
+  }
+  
+  .navbar .icon-btn:hover .material-icons,
+  .navbar .quick-create-btn:hover .material-icons {
+    color: var(--sys-on-primary-container);
+    transform: scale(1.1);
+  }
+  
+  .search-icon .material-icons {
+    font-size: 16px;
+    color: color-mix(in srgb, var(--sys-on-primary-container) 60%, white);
+  }
+  
+  .tool-icons .material-icons {
+    font-size: 20px;
+  }
+  
+  .user-avatar .material-icons {
+    font-size: 32px;
+  }
+  
+  .page-container .material-icons {
+    font-size: 16px;
+  }
+  
+  .card .material-icons {
+    font-size: 20px;
+    margin-right: 4px;
+  }
+  
+  .table-container .material-icons {
+    font-size: 14px;
+  }
+  
+  .button:hover .material-icons,
+  .quick-create-item:hover .material-icons {
+    transform: scale(1.1);
+  }
